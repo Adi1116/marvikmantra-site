@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand colors sampled directly from the MarvikMantra logo. */
+  --color-ink: #00008f;
+  --color-ink-soft: #000db8;
+  --color-parchment: #f5f6fb;
+  --color-paper: #ffffff;
+  /* Two orange tokens: "gold" is darkened for AA text contrast on light
+     backgrounds; "gold-bright" is the logo's true vivid orange, reserved
+     for use on dark (navy) surfaces where contrast is already high. */
+  --color-gold: #a66200;
+  --color-gold-bright: #ff9c00;
+  --color-gold-soft: #f2c98a;
+  --color-crimson: #a6342a;
+  --color-slate: #5b6472;
+
+  --font-display: "Space Grotesk", ui-sans-serif, sans-serif;
+  --font-body: "Source Serif 4", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-parchment);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background-color: var(--color-gold-soft);
+  color: var(--color-ink);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* dotted leader rule used by the ScoreCard signature element */
+.leader-dots {
+  flex: 1;
+  border-bottom: 2px dotted var(--color-slate);
+  opacity: 0.35;
+  margin: 0 0.75rem;
+  transform: translateY(-4px);
+}

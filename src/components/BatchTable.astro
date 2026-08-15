@@ -1,0 +1,45 @@
+---
+interface Props {
+  program: string;
+  batches: { phase: string; date: string }[];
+  timing?: string;
+  duration?: string;
+  deadline?: string;
+}
+const { program, batches, timing = "Evening session", duration = "10 Months", deadline = "February 15, 2026" } = Astro.props;
+---
+
+<div class="border border-ink/15 bg-paper">
+  <div class="flex items-center justify-between border-b border-ink/15 bg-ink px-6 py-4">
+    <h3 class="font-display text-lg font-bold text-parchment">{program}</h3>
+    <a href="/contact" class="font-mono text-xs uppercase tracking-wider text-gold-bright hover:text-parchment">
+      Contact Us →
+    </a>
+  </div>
+  <div class="grid divide-y divide-ink/10 md:grid-cols-2 md:divide-x md:divide-y-0 lg:grid-cols-4">
+    {
+      batches.map((b) => (
+        <div class="p-6">
+          <p class="font-display text-sm font-bold text-ink">{b.phase}</p>
+          <dl class="mt-3 space-y-2 font-mono text-xs text-slate">
+            <div class="flex justify-between gap-3">
+              <dt>Start Date</dt>
+              <dd class="text-ink">{b.date}</dd>
+            </div>
+            <div class="flex justify-between gap-3">
+              <dt>Timing</dt>
+              <dd class="text-ink">{timing}</dd>
+            </div>
+            <div class="flex justify-between gap-3">
+              <dt>Duration</dt>
+              <dd class="text-ink">{duration}</dd>
+            </div>
+          </dl>
+          <p class="mt-3 border-t border-ink/10 pt-3 text-[11px] text-crimson">
+            Enrollment Deadline: {deadline}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</div>

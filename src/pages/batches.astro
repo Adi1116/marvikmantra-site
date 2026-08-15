@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import BatchTable from "../components/BatchTable.astro";
+import WhyChoose from "../components/WhyChoose.astro";
+import CTASection from "../components/CTASection.astro";
+import { courses } from "../data/courses";
+
+const sorted = [...courses].sort((a, b) => a.level - b.level);
+---
+
+<Layout title="Batches" description="Focused learning batches — secure your spot in the next MarvikMantra batch. Limited seats available.">
+  <PageHero
+    eyebrow="Focused Learning Batches"
+    title="Upcoming Batches"
+    subtitle="Secure your spot in our next batch. Limited seats available!"
+  />
+
+  <section class="mx-auto max-w-6xl space-y-12 px-6 py-16">
+    {
+      sorted.map((course) => (
+        <div>
+          <h2 class="mb-4 font-display text-xl font-bold text-ink">{course.targetStudents} Batches</h2>
+          <BatchTable program={course.name} batches={course.batches} />
+        </div>
+      ))
+    }
+  </section>
+
+  <WhyChoose />
+  <CTASection />
+</Layout>

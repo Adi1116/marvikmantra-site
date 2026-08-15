@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import TeacherCard from "../components/TeacherCard.astro";
+import WhyChoose from "../components/WhyChoose.astro";
+import CTASection from "../components/CTASection.astro";
+import { teachers } from "../data/teachers";
+---
+
+<Layout title="Teachers" description="Meet the mentors — experienced educators who combine deep subject knowledge with practical insights.">
+  <PageHero
+    eyebrow="Meet the Mentors"
+    title="Our Expert Faculty"
+    subtitle="Learn from the best educators who are passionate about your success."
+  />
+
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {teachers.map((teacher) => <TeacherCard teacher={teacher} />)}
+    </div>
+  </section>
+
+  <WhyChoose />
+  <CTASection />
+</Layout>

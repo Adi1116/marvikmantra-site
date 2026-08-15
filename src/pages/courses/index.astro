@@ -1,0 +1,27 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import CourseCard from "../../components/CourseCard.astro";
+import WhyChoose from "../../components/WhyChoose.astro";
+import CTASection from "../../components/CTASection.astro";
+import { courses } from "../../data/courses";
+
+const sorted = [...courses].sort((a, b) => a.level - b.level);
+---
+
+<Layout title="Courses" description="Unlock your potential — explore MarvikMantra's courses for Class 6 through Class 11 JEE/NEET.">
+  <PageHero
+    eyebrow="Unlock Your Potential"
+    title="All Courses"
+    subtitle="Choose from our carefully designed courses, structured by class level, tailored to meet your academic goals."
+  />
+
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {sorted.map((course) => <CourseCard course={course} />)}
+    </div>
+  </section>
+
+  <WhyChoose />
+  <CTASection />
+</Layout>

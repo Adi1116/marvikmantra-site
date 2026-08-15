@@ -1,0 +1,58 @@
+---
+import { site } from "../data/site";
+
+const courseLinks = [
+  { href: "/courses/momentum-jee", label: "IIT-JEE Preparation" },
+  { href: "/courses/momentum-neet", label: "NEET Medical" },
+  { href: "/courses/medha-magnum", label: "9th & 10th Class" },
+  { href: "/courses/manan-manthan-manas", label: "6th, 7th & 8th Class" },
+];
+---
+
+<footer class="border-t border-parchment/10 bg-ink text-parchment">
+  <div class="mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-4">
+    <div class="md:col-span-2">
+      <div class="flex items-center gap-2.5">
+        <img src="/logo.png" alt="MarvikMantra logo" class="h-9 w-9" />
+        <p class="font-display text-lg font-bold">
+          Marvik<span class="text-gold-bright">Mantra</span>
+        </p>
+      </div>
+      <p class="mt-3 max-w-sm text-sm leading-relaxed text-parchment/70">
+        {site.tagline}
+      </p>
+      <div class="mt-5 flex gap-4 font-mono text-xs uppercase tracking-wider text-parchment/60">
+        <a href={site.socials.instagram} class="hover:text-gold-bright">Instagram</a>
+        <a href={site.socials.facebook} class="hover:text-gold-bright">Facebook</a>
+        <a href={site.socials.youtube} class="hover:text-gold-bright">YouTube</a>
+      </div>
+    </div>
+
+    <div>
+      <p class="font-mono text-xs uppercase tracking-wider text-gold-bright">Quick Links</p>
+      <ul class="mt-4 space-y-2 text-sm text-parchment/80">
+        <li><a href="/courses" class="hover:text-gold-bright">Courses</a></li>
+        <li><a href="/teachers" class="hover:text-gold-bright">Our Teachers</a></li>
+        <li><a href="/batches" class="hover:text-gold-bright">Upcoming Batches</a></li>
+        <li><a href="/about" class="hover:text-gold-bright">About Us</a></li>
+        <li><a href="/contact" class="hover:text-gold-bright">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="font-mono text-xs uppercase tracking-wider text-gold-bright">Popular Courses</p>
+      <ul class="mt-4 space-y-2 text-sm text-parchment/80">
+        {courseLinks.map((c) => (
+          <li><a href={c.href} class="hover:text-gold-bright">{c.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-parchment/10">
+    <div class="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-6 text-xs text-parchment/50 md:flex-row md:items-center md:justify-between">
+      <p>Copyright © 2026 {site.name.toUpperCase()}. All Rights Reserved.</p>
+      <a href="/privacy-policy" class="hover:text-gold-bright">Privacy Policy</a>
+    </div>
+  </div>
+</footer>

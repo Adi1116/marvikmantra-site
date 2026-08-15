@@ -1,0 +1,73 @@
+---
+import Layout from "../layouts/Layout.astro";
+import WhyChoose from "../components/WhyChoose.astro";
+import CTASection from "../components/CTASection.astro";
+import CourseCard from "../components/CourseCard.astro";
+import { site, stats } from "../data/site";
+import { courses } from "../data/courses";
+
+const popularCourses = [...courses].sort((a, b) => a.level - b.level);
+---
+
+<Layout title="Home" description={site.tagline}>
+  <section class="border-b border-ink/10 bg-parchment">
+    <div class="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[1.2fr_1fr] md:py-28">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-crimson">
+          Jaipur · IIT-JEE · NEET · Foundation
+        </p>
+        <h1 class="mt-4 font-display text-4xl font-bold leading-[1.1] tracking-tight text-ink md:text-6xl">
+          Empowering students to achieve their <span class="text-gold">academic dreams.</span>
+        </h1>
+        <p class="mt-6 max-w-lg text-base leading-relaxed text-slate">
+          {site.legalName} provides quality coaching for IIT-JEE, NEET, Olympiad, and Board exams with expert faculty and result-oriented guidance — since 2026.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a
+            href="/contact"
+            class="rounded-sm bg-crimson px-7 py-3.5 font-display text-sm font-semibold text-parchment transition-colors hover:bg-ink"
+          >
+            Schedule a Free Consultation
+          </a>
+          <a
+            href="/courses"
+            class="rounded-sm border border-ink/20 px-7 py-3.5 font-display text-sm font-semibold text-ink transition-colors hover:border-gold hover:text-gold"
+          >
+            Explore Courses
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 self-start">
+        {
+          stats.map((s) => (
+            <div class="border border-ink/15 bg-paper p-5">
+              <p class="font-mono text-2xl font-semibold text-gold">{s.value}</p>
+              <p class="mt-1 text-xs font-medium text-ink">{s.label}</p>
+              <p class="mt-1 text-[11px] text-slate">{s.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-20">
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-crimson">Programs</p>
+        <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-ink md:text-4xl">Popular Courses</h2>
+      </div>
+      <a href="/courses" class="hidden font-display text-sm font-semibold text-gold hover:text-crimson md:inline-block">
+        View all courses →
+      </a>
+    </div>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {popularCourses.map((course) => <CourseCard course={course} />)}
+    </div>
+  </section>
+
+  <WhyChoose />
+
+  <CTASection />
+</Layout>
