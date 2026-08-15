@@ -2,69 +2,65 @@
 import { site } from "../data/site";
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About Us" },
-  { href: "/courses", label: "Courses" },
-  { href: "/teachers", label: "Teachers" },
-  { href: "/batches", label: "Batches" },
+  { href: "/#programs", label: "Programs" },
+  { href: "/#approach", label: "Our approach" },
+  { href: "/#results", label: "Results" },
+  { href: "/teachers", label: "Faculty" },
+  { href: "/about", label: "About" },
 ];
 
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="sticky top-0 z-50 border-b border-ink/10 bg-parchment/95 backdrop-blur">
-  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-    <a href="/" class="flex items-center gap-2.5">
-      <img src="/logo.png" alt="MarvikMantra logo" class="h-11 w-11" />
-      <span class="font-display text-xl font-bold tracking-tight text-ink">
-        Marvik<span class="text-gold">Mantra</span>
+<header class="site-header">
+  <div class="nav-shell">
+    <a href="/" class="brand" aria-label="MarvikMantra home">
+      <img src="/logo.png" alt="MarvikMantra" class="brand-logo" />
+      <span class="brand-name">
+        Marvik<span>Mantra</span>
       </span>
     </a>
 
-    <nav class="hidden items-center gap-8 md:flex" aria-label="Primary">
+    <nav class="desktop-nav" aria-label="Primary navigation">
       {
-        links.map((link) => {
-          const active =
-            link.href === "/"
-              ? currentPath === "/"
-              : currentPath.startsWith(link.href);
-          return (
-            <a
-              href={link.href}
-              class={`font-display text-sm font-medium tracking-wide transition-colors hover:text-gold ${
-                active ? "text-gold" : "text-ink"
-              }`}
-              aria-current={active ? "page" : undefined}
-            >
-              {link.label}
-            </a>
-          );
-        })
+        links.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "nav-link",
+              {
+                active:
+                  link.href.startsWith("/#")
+                    ? currentPath === "/"
+                    : currentPath.startsWith(link.href),
+              },
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
       }
     </nav>
 
-    <a
-      href="/contact"
-      class="hidden rounded-sm bg-ink px-5 py-2.5 font-display text-sm font-semibold text-parchment transition-colors hover:bg-crimson md:inline-block"
-    >
-      Contact Us
+    <a href="/contact" class="nav-cta">
+      Enquire now
     </a>
 
-    <details class="md:hidden">
-      <summary class="cursor-pointer list-none rounded-sm border border-ink/20 px-3 py-2 font-display text-sm">
-        Menu
+    <details class="mobile-menu">
+      <summary aria-label="Open navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
       </summary>
-      <div class="absolute inset-x-0 top-full flex flex-col gap-1 border-b border-ink/10 bg-parchment px-6 py-4 shadow-lg">
+
+      <div class="mobile-panel">
         {
           links.map((link) => (
-            <a href={link.href} class="py-2 font-display text-sm text-ink">
-              {link.label}
-            </a>
+            <a href={link.href}>{link.label}</a>
           ))
         }
-        <a href="/contact" class="py-2 font-display text-sm font-semibold text-crimson">
-          Contact Us
-        </a>
+
+        <a href="/contact" class="mobile-cta">Enquire now</a>
       </div>
     </details>
   </div>

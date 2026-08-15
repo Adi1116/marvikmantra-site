@@ -9,65 +9,252 @@ import { courses } from "../data/courses";
 const popularCourses = [...courses].sort((a, b) => a.level - b.level);
 ---
 
-<Layout title="Home" description={site.tagline}>
-  <section class="border-b border-ink/10 bg-parchment">
-    <div class="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[1.2fr_1fr] md:py-28">
-      <div>
-        <p class="font-mono text-xs uppercase tracking-[0.2em] text-crimson">
-          Jaipur · IIT-JEE · NEET · Foundation
+<Layout title="Home" description={site.description}>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid-pattern"></div>
+
+    <div class="hero-shell">
+
+      <div class="hero-content">
+        <p class="eyebrow">
+          Jaipur · Foundation · IIT-JEE · NEET
         </p>
-        <h1 class="mt-4 font-display text-4xl font-bold leading-[1.1] tracking-tight text-ink md:text-6xl">
-          Empowering students to achieve their <span class="text-gold">academic dreams.</span>
+
+        <h1>
+          Build strong concepts.
+          <span>Build a stronger future.</span>
         </h1>
-        <p class="mt-6 max-w-lg text-base leading-relaxed text-slate">
-          {site.legalName} provides quality coaching for IIT-JEE, NEET, Olympiad, and Board exams with expert faculty and result-oriented guidance — since 2026.
+
+        <p class="hero-description">
+          MarvikMantra brings together experienced educators to help students
+          build conceptual clarity, academic confidence and the foundations
+          for competitive success.
         </p>
-        <div class="mt-8 flex flex-wrap gap-4">
-          <a
-            href="/contact"
-            class="rounded-sm bg-crimson px-7 py-3.5 font-display text-sm font-semibold text-parchment transition-colors hover:bg-ink"
-          >
-            Schedule a Free Consultation
+
+        <div class="hero-actions">
+          <a href="#programs" class="button button-primary">
+            Explore programs
+            <span>→</span>
           </a>
-          <a
-            href="/courses"
-            class="rounded-sm border border-ink/20 px-7 py-3.5 font-display text-sm font-semibold text-ink transition-colors hover:border-gold hover:text-gold"
-          >
-            Explore Courses
+
+          <a href="/contact" class="button button-secondary">
+            Talk to an academic counsellor
           </a>
+        </div>
+
+        <div class="hero-note">
+          <span class="hero-dot"></span>
+          Admissions open for the current academic session
         </div>
       </div>
 
-      <div class="grid grid-cols-2 gap-4 self-start">
-        {
-          stats.map((s) => (
-            <div class="border border-ink/15 bg-paper p-5">
-              <p class="font-mono text-2xl font-semibold text-gold">{s.value}</p>
-              <p class="mt-1 text-xs font-medium text-ink">{s.label}</p>
-              <p class="mt-1 text-[11px] text-slate">{s.description}</p>
+      <div class="hero-visual">
+        <div class="hero-orbit hero-orbit-one"></div>
+        <div class="hero-orbit hero-orbit-two"></div>
+
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <span>MARVIKMANTRA</span>
+            <span>EST. 2026</span>
+          </div>
+
+          <div class="hero-logo-wrap">
+            <img
+              src="/logo.png"
+              alt="MarvikMantra logo"
+              class="hero-logo"
+            />
+          </div>
+
+          <div class="hero-card-bottom">
+            <span>Learn</span>
+            <span>Understand</span>
+            <span>Grow</span>
+          </div>
+        </div>
+
+        <div class="floating-badge badge-one">
+          <strong>18+</strong>
+          <span>years of collective<br />teaching experience</span>
+        </div>
+
+        <div class="floating-badge badge-two">
+          <strong>5000+</strong>
+          <span>students<br />taught</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- TRUST STRIP -->
+  <section class="stats-strip" id="results">
+    <div class="stats-shell">
+      {
+        stats.map((stat, index) => (
+          <div class="stat-item">
+            <span class="stat-value">{stat.value}</span>
+            <div>
+              <span class="stat-label">{stat.label}</span>
+              <span class="stat-description">{stat.description}</span>
             </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy">
+    <div class="section-shell philosophy-grid">
+
+      <div>
+        <p class="eyebrow">Why MarvikMantra</p>
+
+        <h2>
+          Learning should change
+          <span>how students think.</span>
+        </h2>
+      </div>
+
+      <div class="philosophy-copy">
+        <p>
+          A strong academic foundation is more than remembering formulas.
+          It is the ability to understand a problem, approach it with
+          confidence and learn from every mistake.
+        </p>
+
+        <a href="/about" class="text-link">
+          Discover our approach <span>→</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- JOURNEY -->
+  <section class="journey">
+    <div class="section-shell">
+
+      <div class="section-heading centered">
+        <p class="eyebrow">The MarvikMantra journey</p>
+
+        <h2>
+          From strong foundations
+          <span>to ambitious goals.</span>
+        </h2>
+
+        <p>
+          Every stage has a purpose. We help students grow from curious
+          learners into confident aspirants.
+        </p>
+      </div>
+
+      <div class="journey-line">
+
+        <article class="journey-card">
+          <span class="journey-number">01</span>
+          <p class="journey-class">Classes 6–8</p>
+          <h3>Build the foundation.</h3>
+          <p>
+            Develop curiosity, conceptual clarity and strong academic habits.
+          </p>
+        </article>
+
+        <div class="journey-arrow">→</div>
+
+        <article class="journey-card">
+          <span class="journey-number">02</span>
+          <p class="journey-class">Classes 9–10</p>
+          <h3>Strengthen the way you solve.</h3>
+          <p>
+            Connect school learning with deeper problem-solving and competitive
+            thinking.
+          </p>
+        </article>
+
+        <div class="journey-arrow">→</div>
+
+        <article class="journey-card">
+          <span class="journey-number">03</span>
+          <p class="journey-class">Class 11</p>
+          <h3>Prepare with purpose.</h3>
+          <p>
+            Focused preparation for the JEE and NEET pathways.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PROGRAMS -->
+  <section id="programs" class="programs">
+    <div class="section-shell">
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Programs</p>
+
+          <h2>
+            Find the right path
+            <span>for your child.</span>
+          </h2>
+        </div>
+
+        <a href="/courses" class="text-link desktop-link">
+          View all programs <span>→</span>
+        </a>
+      </div>
+
+      <div class="programs-grid">
+        {
+          popularCourses.map((course) => (
+            <CourseCard course={course} />
           ))
         }
       </div>
+
     </div>
   </section>
 
-  <section class="mx-auto max-w-6xl px-6 py-20">
-    <div class="flex items-end justify-between gap-4">
-      <div>
-        <p class="font-mono text-xs uppercase tracking-[0.2em] text-crimson">Programs</p>
-        <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-ink md:text-4xl">Popular Courses</h2>
-      </div>
-      <a href="/courses" class="hidden font-display text-sm font-semibold text-gold hover:text-crimson md:inline-block">
-        View all courses →
-      </a>
-    </div>
-    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {popularCourses.map((course) => <CourseCard course={course} />)}
-    </div>
-  </section>
 
+  <!-- APPROACH -->
   <WhyChoose />
 
-  <CTASection />
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="section-shell">
+      <div class="final-cta-inner">
+
+        <div>
+          <p class="eyebrow light">Your next step</p>
+
+          <h2>
+            Let's find the right
+            <span>path forward.</span>
+          </h2>
+
+          <p>
+            Talk to our team about your child's academic goals, current class
+            and the program that fits best.
+          </p>
+        </div>
+
+        <a href="/contact" class="button button-light">
+          Talk to an academic counsellor
+          <span>→</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
 </Layout>
