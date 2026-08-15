@@ -1,27 +1,635 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import PageHero from "../../components/PageHero.astro";
 import CourseCard from "../../components/CourseCard.astro";
-import WhyChoose from "../../components/WhyChoose.astro";
 import CTASection from "../../components/CTASection.astro";
 import { courses } from "../../data/courses";
 
 const sorted = [...courses].sort((a, b) => a.level - b.level);
 ---
 
-<Layout title="Courses" description="Unlock your potential — explore MarvikMantra's courses for Class 6 through Class 11 JEE/NEET.">
-  <PageHero
-    eyebrow="Unlock Your Potential"
-    title="All Courses"
-    subtitle="Choose from our carefully designed courses, structured by class level, tailored to meet your academic goals."
-  />
+<Layout
+  title="Programs"
+  description="Explore MarvikMantra's academic programs for Classes 6–11, including foundation, JEE and NEET preparation."
+>
 
-  <section class="mx-auto max-w-6xl px-6 py-16">
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {sorted.map((course) => <CourseCard course={course} />)}
+  <!-- HERO -->
+  <section class="programs-page-hero">
+    <div class="programs-hero-grid"></div>
+
+    <div class="mx-auto max-w-6xl px-6 py-24 md:py-32">
+      <div class="max-w-4xl">
+        <p class="eyebrow">Programs</p>
+
+        <h1 class="programs-page-title">
+          Find the right path
+          <span>for your child.</span>
+        </h1>
+
+        <p class="programs-page-subtitle">
+          From strong academic foundations to focused JEE and NEET preparation,
+          explore programs designed around where your child is today — and where
+          they want to go next.
+        </p>
+
+        <div class="programs-hero-actions">
+          <a href="#programs" class="programs-primary-btn">
+            Explore programs
+            <span>↓</span>
+          </a>
+
+          <a href="/contact" class="programs-secondary-btn">
+            Talk to an academic counsellor
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <WhyChoose />
-  <CTASection />
+
+  <!-- PROGRAM JOURNEY -->
+  <section class="program-journey">
+    <div class="mx-auto max-w-6xl px-6">
+
+      <div class="program-section-heading">
+        <div>
+          <p class="eyebrow">The learning journey</p>
+
+          <h2>
+            Every stage has
+            <span>a purpose.</span>
+          </h2>
+        </div>
+
+        <p>
+          Our programs are structured to help students build strong foundations
+          before moving towards focused competitive preparation.
+        </p>
+      </div>
+
+      <div class="program-path">
+
+        <div class="program-path-item">
+          <span class="program-path-number">01</span>
+          <span class="program-path-class">Classes 6–8</span>
+          <h3>Build the foundation.</h3>
+          <p>
+            Develop curiosity, conceptual clarity and strong academic habits.
+          </p>
+        </div>
+
+        <div class="program-path-line"></div>
+
+        <div class="program-path-item">
+          <span class="program-path-number">02</span>
+          <span class="program-path-class">Classes 9–10</span>
+          <h3>Strengthen your thinking.</h3>
+          <p>
+            Deepen understanding and develop stronger problem-solving skills.
+          </p>
+        </div>
+
+        <div class="program-path-line"></div>
+
+        <div class="program-path-item">
+          <span class="program-path-number">03</span>
+          <span class="program-path-class">Class 11</span>
+          <h3>Prepare with purpose.</h3>
+          <p>
+            Focused preparation for the JEE and NEET pathways.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PROGRAMS -->
+  <section id="programs" class="program-list">
+    <div class="mx-auto max-w-6xl px-6">
+
+      <div class="program-section-heading">
+        <div>
+          <p class="eyebrow">Choose your program</p>
+
+          <h2>
+            Programs built around
+            <span>student needs.</span>
+          </h2>
+        </div>
+
+        <p>
+          Explore the programs currently offered by MarvikMantra.
+          Admissions are open for the current academic session.
+        </p>
+      </div>
+
+
+      <div class="program-list-grid">
+        {
+          sorted.map((course, index) => (
+            <article class:list={[
+              "program-feature-card",
+              {
+                "program-feature-card-dark": index >= 2,
+              },
+            ]}>
+
+              <div class="program-card-top">
+                <span class="program-card-number">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
+                <span class="program-card-level">
+                  {course.badge}
+                </span>
+              </div>
+
+              <div class="program-card-content">
+                <p class="program-card-name">
+                  {course.name}
+                </p>
+
+                <h3>{course.title}</h3>
+
+                <p class="program-card-description">
+                  {course.description}
+                </p>
+              </div>
+
+              <div class="program-card-bottom">
+                <div>
+                  <span>Target</span>
+                  <strong>{course.targetStudents}</strong>
+                </div>
+
+                <a href={`/courses/${course.slug}`}>
+                  Explore program <span>→</span>
+                </a>
+              </div>
+
+            </article>
+          ))
+        }
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ADMISSION CTA -->
+  <section class="program-admission">
+    <div class="mx-auto max-w-6xl px-6">
+
+      <div class="program-admission-inner">
+
+        <div>
+          <p class="eyebrow light">Admissions open</p>
+
+          <h2>
+            Not sure which program
+            <span>fits best?</span>
+          </h2>
+
+          <p>
+            Talk to our academic counsellor and understand the right path for
+            your child's current class and goals.
+          </p>
+        </div>
+
+        <a href="/contact" class="program-admission-btn">
+          Talk to an academic counsellor
+          <span>→</span>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
 </Layout>
+
+
+<style>
+  .programs-page-hero {
+    position: relative;
+    overflow: hidden;
+    background: #f3f5fb;
+    border-bottom: 1px solid rgba(7, 26, 82, 0.08);
+  }
+
+  .programs-hero-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.4;
+    background-image:
+      linear-gradient(rgba(7, 26, 82, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(7, 26, 82, 0.035) 1px, transparent 1px);
+    background-size: 55px 55px;
+  }
+
+  .programs-page-title {
+    position: relative;
+    margin-top: 16px;
+    max-width: 850px;
+    font-family: var(--font-display);
+    font-size: clamp(48px, 7vw, 82px);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+    color: var(--color-ink);
+  }
+
+  .programs-page-title span {
+    display: block;
+    color: var(--color-gold);
+  }
+
+  .programs-page-subtitle {
+    position: relative;
+    max-width: 650px;
+    margin-top: 28px;
+    color: #667085;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  .programs-hero-actions {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 34px;
+  }
+
+  .programs-primary-btn,
+  .programs-secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-radius: 4px;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .programs-primary-btn {
+    background: var(--color-ink);
+    color: white;
+  }
+
+  .programs-secondary-btn {
+    border: 1px solid rgba(7, 26, 82, 0.18);
+    color: var(--color-ink);
+    background: white;
+  }
+
+  .program-journey {
+    padding: 110px 0;
+    background: white;
+  }
+
+  .program-section-heading {
+    display: grid;
+    grid-template-columns: 1fr 0.65fr;
+    gap: 80px;
+    align-items: end;
+  }
+
+  .program-section-heading h2 {
+    margin-top: 12px;
+    font-family: var(--font-display);
+    font-size: clamp(35px, 4vw, 55px);
+    line-height: 1;
+    letter-spacing: -0.045em;
+    color: var(--color-ink);
+  }
+
+  .program-section-heading h2 span {
+    color: var(--color-gold);
+  }
+
+  .program-section-heading > p {
+    color: #667085;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .program-path {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr 60px 1fr;
+    align-items: center;
+    margin-top: 65px;
+  }
+
+  .program-path-item {
+    min-height: 240px;
+    padding: 28px;
+    border: 1px solid rgba(7, 26, 82, 0.1);
+    background: #f8f9fc;
+  }
+
+  .program-path-number {
+    display: block;
+    color: var(--color-gold);
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+
+  .program-path-class {
+    display: block;
+    margin-top: 45px;
+    color: #667085;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .program-path-item h3 {
+    margin-top: 8px;
+    font-family: var(--font-display);
+    font-size: 21px;
+    color: var(--color-ink);
+  }
+
+  .program-path-item p {
+    margin-top: 10px;
+    color: #667085;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .program-path-line {
+    height: 1px;
+    background: var(--color-gold);
+    position: relative;
+  }
+
+  .program-path-line::after {
+    content: "→";
+    position: absolute;
+    right: -3px;
+    top: -12px;
+    color: var(--color-gold);
+    background: white;
+    padding-left: 5px;
+    font-family: var(--font-display);
+  }
+
+  .program-list {
+    padding: 110px 0;
+    background: var(--color-parchment);
+  }
+
+  .program-list-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 60px;
+  }
+
+  .program-feature-card {
+    min-height: 390px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: white;
+    border: 1px solid rgba(7, 26, 82, 0.1);
+    transition:
+      transform 200ms ease,
+      box-shadow 200ms ease,
+      border-color 200ms ease;
+  }
+
+  .program-feature-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--color-gold);
+    box-shadow: 0 25px 60px rgba(7, 26, 82, 0.09);
+  }
+
+  .program-feature-card-dark {
+    background: var(--color-ink);
+    border-color: var(--color-ink);
+  }
+
+  .program-feature-card-dark:hover {
+    border-color: var(--color-gold);
+  }
+
+  .program-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .program-card-number {
+    color: var(--color-gold);
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+
+  .program-card-level {
+    color: #667085;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .program-feature-card-dark .program-card-level {
+    color: rgba(255,255,255,0.5);
+  }
+
+  .program-card-name {
+    color: var(--color-gold);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .program-card-content h3 {
+    max-width: 500px;
+    margin-top: 12px;
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3vw, 38px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: var(--color-ink);
+  }
+
+  .program-feature-card-dark .program-card-content h3 {
+    color: white;
+  }
+
+  .program-card-description {
+    max-width: 520px;
+    margin-top: 16px;
+    color: #667085;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .program-feature-card-dark .program-card-description {
+    color: rgba(255,255,255,0.62);
+  }
+
+  .program-card-bottom {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(7, 26, 82, 0.1);
+  }
+
+  .program-feature-card-dark .program-card-bottom {
+    border-color: rgba(255,255,255,0.12);
+  }
+
+  .program-card-bottom > div span,
+  .program-card-bottom > div strong {
+    display: block;
+  }
+
+  .program-card-bottom > div span {
+    color: #667085;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    text-transform: uppercase;
+  }
+
+  .program-card-bottom > div strong {
+    margin-top: 5px;
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-size: 13px;
+  }
+
+  .program-feature-card-dark .program-card-bottom > div strong {
+    color: white;
+  }
+
+  .program-card-bottom a {
+    color: var(--color-gold);
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .program-card-bottom a span {
+    display: inline-block;
+    transition: transform 180ms ease;
+  }
+
+  .program-card-bottom a:hover span {
+    transform: translateX(4px);
+  }
+
+  .program-admission {
+    padding: 100px 0;
+    background: var(--color-parchment);
+  }
+
+  .program-admission-inner {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 55px;
+    background: var(--color-ink);
+  }
+
+  .program-admission-inner h2 {
+    max-width: 650px;
+    margin-top: 12px;
+    color: white;
+    font-family: var(--font-display);
+    font-size: clamp(35px, 4vw, 55px);
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+
+  .program-admission-inner h2 span {
+    color: var(--color-gold-bright);
+  }
+
+  .program-admission-inner p:last-child {
+    max-width: 560px;
+    margin-top: 20px;
+    color: rgba(255,255,255,0.62);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .program-admission-btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+    background: var(--color-gold-bright);
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  @media (max-width: 900px) {
+    .program-section-heading {
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+
+    .program-path {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .program-path-line {
+      display: none;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .programs-page-title {
+      font-size: clamp(45px, 13vw, 65px);
+    }
+
+    .programs-page-subtitle {
+      font-size: 15px;
+    }
+
+    .program-journey,
+    .program-list {
+      padding: 80px 0;
+    }
+
+    .program-list-grid {
+      grid-template-columns: 1fr;
+      margin-top: 40px;
+    }
+
+    .program-feature-card {
+      min-height: 350px;
+    }
+
+    .program-admission {
+      padding: 70px 0;
+    }
+
+    .program-admission-inner {
+      padding: 35px 25px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 30px;
+    }
+
+    .program-admission-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
